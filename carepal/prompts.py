@@ -16,7 +16,7 @@ FIELDS
 - vitals: blood_pressure, pulse, temperature (keep the unit the nurse used; if none stated write the number only), spo2, blood_sugar (include fasting/PP if said), respiratory_rate, weight.
 - meals: one entry per meal/snack/fluid mentioned, with what and how much was eaten ("ate half", "refused") in the nurse's terms.
 - medicines: name, dose and time only if stated; status: "given" (nurse gave/patient took it), "refused", "missed", or "unspecified" if the note just lists it.
-- activities: walking, exercise, bath, physiotherapy, visitors, games, etc.
+- activities: walking, exercise, bath, physiotherapy, visitors, games, etc. Resting, sleeping or sitting quietly is NOT an activity. Only list something the patient did or was helped to do.
 - mood: the nurse's description of mood/behaviour/sleep-related mood (one entry, or null).
 - concerns: anything the family should be told about or follow up: pain, fall, fever, refused medicine/food, confusion, vomiting, low/high readings, poor sleep, skin issues, equipment problems, anything the nurse is worried about. severity: "urgent" (needs same-day action / doctor / emergency), "attention" (tell the family, follow up soon), "monitor" (keep an eye on it). Use source "note".
 

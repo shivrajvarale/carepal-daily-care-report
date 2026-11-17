@@ -28,14 +28,14 @@ choose the family's language, press **Create report**. For voice, open **Voice n
 **Transcribe**, fix the text if needed, then create the report. **Weekly summary** tab → *Load sample week*.
 
 ```bash
-pytest                      # 16 offline tests (fake model, no key needed)
-python -m eval.run_eval     # runs the 28 synthetic notes through the real model, writes EVALUATION.md
+pytest                      # 17 offline tests (fake model, no key needed)
+python -m eval.run_eval          # runs the 28 synthetic notes (use --resume to retry only failed notes)
 python -m eval.run_eval --resume  # retries failed/missing notes and keeps successful saved results
 python -m eval.run_eval --rescore   # re-score saved results without API calls
 ```
 
 Configuration (env vars): `GEMINI_API_KEY` (required), `GEMINI_MODEL` (default `gemini-3.8-flash`; change it if Google
-retires that name), `MAX_NOTE_CHARS`, `MAX_AUDIO_MB`.
+retires a model), `MAX_NOTE_CHARS`, `MAX_AUDIO_MB`.
 
 ---
 
@@ -110,6 +110,8 @@ checked"), multiple readings, Devanagari digits, voice-style filler words, a not
 invented sections, serious-concern recall, false alarms, what the verifier removed, and every difference from the gold labels.
 The written analysis is the last section of that file.
 
+Free-tier API quotas limit how fast the evaluation can run. If some notes fail with 429 or 503 errors, run `python -m eval.run_eval --resume` to retry only the failed notes; notes that already succeeded are kept. Use `--rescore` to rebuild EVALUATION.md from saved results without any API calls.
+
 ---
 
 ## What I would build next
@@ -126,8 +128,7 @@ The written analysis is the last section of that file.
 
 ## AI tools used
 
-- **Gemini API (`gemini-3.8-flash`)**: the runtime model for transcription, extraction and summary writing; this matches the configured default.
-- **Measured live latency**: median 19.9 seconds per successful note across six notes (12.7–613.1 seconds, including provider retries). This is a partial-run measurement, not a full 28-note benchmark: 22 saved rows still have provider errors.
+- Gemini (`gemini-3.8-flash`) is the runtime model for transcription, extraction and summary writing.
 - **Claude (Anthropic)**: used while building - to plan the architecture, draft code, tests and this README. I reviewed and ran the code and tests myself.
 
 ## Repo layout

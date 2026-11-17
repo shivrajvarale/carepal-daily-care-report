@@ -5,6 +5,7 @@ import pytest
 from carepal.grounding import normalise, numbers_in, quote_in_note
 from carepal.llm import LLMError
 from carepal.pipeline import generate_report, transcribe_audio
+from carepal.prompts import EXTRACT_SYSTEM
 from carepal.weekly import compute_stats, generate_weekly
 
 NOTE = "Aaj subah BP 130/80, pulse 74. Breakfast mein 2 roti khayi. Metformin 500 mg de di. Mood achha tha. SpO2 91%."
@@ -44,6 +45,10 @@ def test_normalise_devanagari_digits_and_case():
     assert quote_in_note("bp  130/80", "Aaj BP 130/80 tha")
     assert not quote_in_note("BP 140/90", "Aaj BP 130/80 tha")
     assert not quote_in_note("a", "a b c")  # too short to be evidence
+
+
+def test_extract_prompt_excludes_resting_from_activities():
+    assert "NOT an activity" in EXTRACT_SYSTEM
 
 
 def test_good_extraction_passes_untouched():
