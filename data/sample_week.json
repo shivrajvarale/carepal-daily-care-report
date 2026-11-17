@@ -1,0 +1,13 @@
+{
+  "patient": "Mrs. Sharma (synthetic)",
+  "family_language": "Hindi",
+  "notes": [
+    {"date": "2026-11-09", "note": "Subah BP 130/82, pulse 76. Breakfast mein 2 roti aur sabzi khayi. Metformin 500 mg de di. 15 min balcony mein tehli. Mood achha tha."},
+    {"date": "2026-11-10", "note": "BP 134/84, sugar fasting 122. Dalia aur chai liya. Telmisartan 40 mg di. Poti ke saath carrom khela, bahut khush thi."},
+    {"date": "2026-11-11", "note": "Aaj thodi sust thi, lunch aadha chhoda. BP 126/80. Metformin di. Shaam ko sirf 10 min chali."},
+    {"date": "2026-11-12", "note": "Subah halka bukhar tha, temp 99.8 F. Paracetamol 500 di 10 baje. Khichdi khayi. Aaram karti rahi. Pulse 88."},
+    {"date": "2026-11-13", "note": "Bukhar utar gaya, temp 98.2 F. BP 128/80. Achhe se khana khaya, dal chawal. Garden mein 15 min tehli. Mood theek."},
+    {"date": "2026-11-14", "note": "BP 132/84, pulse 74, SpO2 97. Metformin aur Telmisartan di. Bhajan sune aur family se video call par baat ki. Mood ekdum badhiya."},
+    {"date": "2026-11-15", "note": "Aaj Metformin lene se mana kar diya, bola pet kharab lag raha hai. Dinner halka liya. Sugar 140 fasting. Shaam ko aaram kiya."}
+  ]
+}

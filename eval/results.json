@@ -1,0 +1,604 @@
+{
+ "language": "English",
+ "model": "gemini-3.8-flash",
+ "results": [
+  {
+   "id": "n01",
+   "report": {
+    "note": "Mrs. Sharma (82), morning shift. BP 132/84, pulse 76, temp 98.4 F, SpO2 97%. Fasting sugar 118. Breakfast: 2 idlis with sambar and a cup of tea, ate well. Gave Telmisartan 40 mg at 8 am and Metformin 500 mg after breakfast. Walked on the balcony for 15 minutes with support. Mood cheerful, chatted about her grandchildren. Lunch was dal rice, finished most of it. No complaints today.",
+    "language_of_summary": "English",
+    "date": null,
+    "extraction": {
+     "vitals": {
+      "blood_pressure": {
+       "value": "132/84 mmHg",
+       "quote": "BP 132/84"
+      },
+      "pulse": {
+       "value": "76 bpm",
+       "quote": "pulse 76"
+      },
+      "temperature": {
+       "value": "98.4 F",
+       "quote": "temp 98.4 F"
+      },
+      "spo2": {
+       "value": "97%",
+       "quote": "SpO2 97%"
+      },
+      "blood_sugar": {
+       "value": "118 (fasting)",
+       "quote": "Fasting sugar 118"
+      },
+      "respiratory_rate": null,
+      "weight": null
+     },
+     "meals": [
+      {
+       "meal": "breakfast",
+       "detail": "2 idlis with sambar and a cup of tea, ate well",
+       "quote": "Breakfast: 2 idlis with sambar and a cup of tea, ate well"
+      },
+      {
+       "meal": "lunch",
+       "detail": "dal rice, finished most of it",
+       "quote": "Lunch was dal rice, finished most of it"
+      }
+     ],
+     "medicines": [
+      {
+       "name": "Telmisartan",
+       "dose": "40 mg",
+       "time": "8 am",
+       "status": "given",
+       "quote": "Gave Telmisartan 40 mg at 8 am"
+      },
+      {
+       "name": "Metformin",
+       "dose": "500 mg",
+       "time": "after breakfast",
+       "status": "given",
+       "quote": "Metformin 500 mg after breakfast"
+      }
+     ],
+     "activities": [
+      {
+       "activity": "Walked on the balcony for 15 minutes with support",
+       "quote": "Walked on the balcony for 15 minutes with support"
+      }
+     ],
+     "mood": {
+      "value": "cheerful, chatted about her grandchildren",
+      "quote": "Mood cheerful, chatted about her grandchildren"
+     },
+     "concerns": [],
+     "summary": [
+      {
+       "text": "Mrs. Sharma had a peaceful morning shift with no complaints.",
+       "evidence": [
+        "No complaints today"
+       ]
+      },
+      {
+       "text": "Her vitals were recorded with BP 132/84, pulse 76, temperature 98.4 F, and SpO2 97%.",
+       "evidence": [
+        "BP 132/84",
+        "pulse 76",
+        "temp 98.4 F",
+        "SpO2 97%"
+       ]
+      },
+      {
+       "text": "Her fasting blood sugar reading was 118.",
+       "evidence": [
+        "Fasting sugar 118"
+       ]
+      },
+      {
+       "text": "She had good meals, enjoying 2 idlis with sambar and tea for breakfast, and eating most of her dal rice for lunch.",
+       "evidence": [
+        "Breakfast: 2 idlis with sambar and a cup of tea, ate well",
+        "Lunch was dal rice, finished most of it"
+       ]
+      },
+      {
+       "text": "She took her prescribed morning medicines, walked on the balcony for 15 minutes with support, and was cheerful while chatting about her grandchildren.",
+       "evidence": [
+        "Gave Telmisartan 40 mg at 8 am and Metformin 500 mg after breakfast",
+        "Walked on the balcony for 15 minutes with support",
+        "Mood cheerful, chatted about her grandchildren"
+       ]
+      }
+     ]
+    },
+    "rejected": [],
+    "warnings": [],
+    "not_mentioned": [
+     "vitals.respiratory_rate",
+     "vitals.weight"
+    ]
+   },
+   "error": null,
+   "seconds": 12.7
+  },
+  {
+   "id": "n02",
+   "report": {
+    "note": "Mr. Iyer. Slept poorly last night, the night nurse said he was awake till 3 am. He was confused and agitated around 5 pm and kept asking to go home. Calmed down after music and tea. Ate half of his lunch, refused dinner. Donepezil 10 mg given at 9 pm. BP 138/86. No fall today.",
+    "language_of_summary": "English",
+    "date": null,
+    "extraction": {
+     "vitals": {
+      "blood_pressure": {
+       "value": "138/86 mmHg",
+       "quote": "BP 138/86"
+      },
+      "pulse": null,
+      "temperature": null,
+      "spo2": null,
+      "blood_sugar": null,
+      "respiratory_rate": null,
+      "weight": null
+     },
+     "meals": [
+      {
+       "meal": "lunch",
+       "detail": "Ate half of his lunch",
+       "quote": "Ate half of his lunch"
+      },
+      {
+       "meal": "dinner",
+       "detail": "Refused dinner",
+       "quote": "refused dinner"
+      },
+      {
+       "meal": "fluids",
+       "detail": "Tea",
+       "quote": "tea"
+      }
+     ],
+     "medicines": [
+      {
+       "name": "Donepezil",
+       "dose": "10 mg",
+       "time": "9 pm",
+       "status": "given",
+       "quote": "Donepezil 10 mg given at 9 pm"
+      }
+     ],
+     "activities": [
+      {
+       "activity": "Listening to music",
+       "quote": "music"
+      }
+     ],
+     "mood": {
+      "value": "Confused and agitated around 5 pm, calmed down after music and tea",
+      "quote": "confused and agitated around 5 pm and kept asking to go home. Calmed down after music and tea"
+     },
+     "concerns": [
+      {
+       "issue": "Poor sleep and stayed awake until 3 am",
+       "severity": "monitor",
+       "quote": "Slept poorly last night, the night nurse said he was awake till 3 am.",
+       "source": "note"
+      },
+      {
+       "issue": "Confused, agitated, and repeatedly asking to go home in the evening",
+       "severity": "attention",
+       "quote": "confused and agitated around 5 pm and kept asking to go home",
+       "source": "note"
+      },
+      {
+       "issue": "Refused dinner",
+       "severity": "attention",
+       "quote": "refused dinner",
+       "source": "note"
+      }
+     ],
+     "summary": [
+      {
+       "text": "Mr. Iyer had a restless night and remained awake until 3 am.",
+       "evidence": [
+        "Slept poorly last night, the night nurse said he was awake till 3 am."
+       ]
+      },
+      {
+       "text": "Around 5 pm, he became confused and agitated, asking to go home, but he settled down after having tea and music.",
+       "evidence": [
+        "He was confused and agitated around 5 pm and kept asking to go home.",
+        "Calmed down after music and tea."
+       ]
+      },
+      {
+       "text": "He managed to eat half of his lunch today, though he refused his dinner.",
+       "evidence": [
+        "Ate half of his lunch, refused dinner."
+       ]
+      },
+      {
+       "text": "His blood pressure was recorded at 138/86.",
+       "evidence": [
+        "BP 138/86"
+       ]
+      },
+      {
+       "text": "His Donepezil 10 mg was given at 9 pm, and he had no falls today.",
+       "evidence": [
+        "Donepezil 10 mg given at 9 pm.",
+        "No fall today."
+       ]
+      }
+     ]
+    },
+    "rejected": [],
+    "warnings": [],
+    "not_mentioned": [
+     "vitals.pulse",
+     "vitals.temperature",
+     "vitals.spo2",
+     "vitals.blood_sugar",
+     "vitals.respiratory_rate",
+     "vitals.weight"
+    ]
+   },
+   "error": null,
+   "seconds": 24.9
+  },
+  {
+   "id": "n03",
+   "report": null,
+   "error": "Model call failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+   "seconds": 17.2
+  },
+  {
+   "id": "n04",
+   "report": {
+    "note": "Baby Aarav, 3 weeks old. Weight 3.4 kg today. Fed every 3 hours, took about 60 ml of formula each time and burped well. Diaper changed 7 times, normal yellow stools. Umbilical stump cleaned and looks dry. Slept in 2 to 3 hour stretches. Gave vitamin D drops as prescribed. Baby was calm and alert during tummy time.",
+    "language_of_summary": "English",
+    "date": null,
+    "extraction": {
+     "vitals": {
+      "blood_pressure": null,
+      "pulse": null,
+      "temperature": null,
+      "spo2": null,
+      "blood_sugar": null,
+      "respiratory_rate": null,
+      "weight": {
+       "value": "3.4 kg",
+       "quote": "Weight 3.4 kg"
+      }
+     },
+     "meals": [
+      {
+       "meal": "fluids",
+       "detail": "Fed every 3 hours, took about 60 ml of formula each time and burped well",
+       "quote": "Fed every 3 hours, took about 60 ml of formula each time and burped well."
+      }
+     ],
+     "medicines": [
+      {
+       "name": "vitamin D drops",
+       "dose": null,
+       "time": null,
+       "status": "given",
+       "quote": "Gave vitamin D drops as prescribed."
+      }
+     ],
+     "activities": [
+      {
+       "activity": "tummy time",
+       "quote": "tummy time"
+      }
+     ],
+     "mood": {
+      "value": "calm and alert",
+      "quote": "calm and alert"
+     },
+     "concerns": [],
+     "summary": [
+      {
+       "text": "Baby Aarav weighed 3.4 kg today.",
+       "evidence": [
+        "Weight 3.4 kg today."
+       ]
+      },
+      {
+       "text": "He took about 60 ml of formula every 3 hours and burped well after feedings.",
+       "evidence": [
+        "Fed every 3 hours, took about 60 ml of formula each time and burped well."
+       ]
+      },
+      {
+       "text": "He had 7 diaper changes with normal yellow stools, and his umbilical stump was cleaned and remains dry.",
+       "evidence": [
+        "Diaper changed 7 times, normal yellow stools.",
+        "Umbilical stump cleaned and looks dry."
+       ]
+      },
+      {
+       "text": "He slept in 2 to 3 hour stretches and received his prescribed vitamin D drops.",
+       "evidence": [
+        "Slept in 2 to 3 hour stretches.",
+        "Gave vitamin D drops as prescribed."
+       ]
+      },
+      {
+       "text": "He was calm and alert during his tummy time.",
+       "evidence": [
+        "Baby was calm and alert during tummy time."
+       ]
+      }
+     ]
+    },
+    "rejected": [],
+    "warnings": [],
+    "not_mentioned": [
+     "vitals.blood_pressure",
+     "vitals.pulse",
+     "vitals.temperature",
+     "vitals.spo2",
+     "vitals.blood_sugar",
+     "vitals.respiratory_rate"
+    ]
+   },
+   "error": null,
+   "seconds": 13.2
+  },
+  {
+   "id": "n05",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.6
+  },
+  {
+   "id": "n06",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.4
+  },
+  {
+   "id": "n07",
+   "report": {
+    "note": "Mrs. Joseph. No fever today. BP could not be checked as the machine battery died. Pulse 72 by hand. Ate a light breakfast, skipped lunch because she felt nauseous, vomited once at 3 pm. Gave ondansetron 4 mg at 3:15. Sipped ORS slowly. Will bring new batteries tomorrow. Looked tired and low.",
+    "language_of_summary": "English",
+    "date": null,
+    "extraction": {
+     "vitals": {
+      "blood_pressure": null,
+      "pulse": {
+       "value": "72 bpm",
+       "quote": "Pulse 72 by hand"
+      },
+      "temperature": null,
+      "spo2": null,
+      "blood_sugar": null,
+      "respiratory_rate": null,
+      "weight": null
+     },
+     "meals": [
+      {
+       "meal": "breakfast",
+       "detail": "Ate a light breakfast",
+       "quote": "Ate a light breakfast"
+      },
+      {
+       "meal": "lunch",
+       "detail": "skipped lunch because she felt nauseous",
+       "quote": "skipped lunch because she felt nauseous"
+      },
+      {
+       "meal": "fluids",
+       "detail": "Sipped ORS slowly",
+       "quote": "Sipped ORS slowly"
+      }
+     ],
+     "medicines": [
+      {
+       "name": "ondansetron",
+       "dose": "4 mg",
+       "time": "3:15",
+       "status": "given",
+       "quote": "Gave ondansetron 4 mg at 3:15"
+      }
+     ],
+     "activities": [],
+     "mood": {
+      "value": "tired and low",
+      "quote": "Looked tired and low"
+     },
+     "concerns": [
+      {
+       "issue": "Patient felt nauseous, skipped lunch, and vomited once at 3 pm",
+       "severity": "attention",
+       "quote": "skipped lunch because she felt nauseous, vomited once at 3 pm",
+       "source": "note"
+      },
+      {
+       "issue": "Blood pressure could not be checked due to dead machine battery",
+       "severity": "monitor",
+       "quote": "BP could not be checked as the machine battery died",
+       "source": "note"
+      }
+     ],
+     "summary": [
+      {
+       "text": "Mrs. Joseph had no fever today, and her pulse was checked by hand at 72.",
+       "evidence": [
+        "No fever today",
+        "Pulse 72 by hand"
+       ]
+      },
+      {
+       "text": "Her blood pressure could not be measured because the monitor battery died, but new batteries will be brought tomorrow.",
+       "evidence": [
+        "BP could not be checked as the machine battery died",
+        "Will bring new batteries tomorrow"
+       ]
+      },
+      {
+       "text": "She managed a light breakfast, but skipped lunch due to nausea and vomited once at 3 pm.",
+       "evidence": [
+        "Ate a light breakfast",
+        "skipped lunch because she felt nauseous, vomited once at 3 pm"
+       ]
+      },
+      {
+       "text": "She was given ondansetron 4 mg at 3:15 and has been slowly sipping ORS.",
+       "evidence": [
+        "Gave ondansetron 4 mg at 3:15",
+        "Sipped ORS slowly"
+       ]
+      },
+      {
+       "text": "She appeared tired and low today.",
+       "evidence": [
+        "Looked tired and low"
+       ]
+      }
+     ]
+    },
+    "rejected": [],
+    "warnings": [],
+    "not_mentioned": [
+     "vitals.blood_pressure",
+     "vitals.temperature",
+     "vitals.spo2",
+     "vitals.blood_sugar",
+     "vitals.respiratory_rate",
+     "vitals.weight",
+     "activities"
+    ]
+   },
+   "error": null,
+   "seconds": 14.9
+  },
+  {
+   "id": "n08",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.6
+  },
+  {
+   "id": "n09",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 10.4
+  },
+  {
+   "id": "n10",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.5
+  },
+  {
+   "id": "n11",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 8.1
+  },
+  {
+   "id": "n12",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 8.8
+  },
+  {
+   "id": "n13",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.6
+  },
+  {
+   "id": "n14",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.7
+  },
+  {
+   "id": "n15",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 8.3
+  },
+  {
+   "id": "n16",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 11.8
+  },
+  {
+   "id": "n17",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 10.3
+  },
+  {
+   "id": "n18",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 8.2
+  },
+  {
+   "id": "n19",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.7
+  },
+  {
+   "id": "n20",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.5
+  },
+  {
+   "id": "n21",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.0
+  },
+  {
+   "id": "n22",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.0
+  },
+  {
+   "id": "n23",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.2
+  },
+  {
+   "id": "n24",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.0
+  },
+  {
+   "id": "n25",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.1
+  },
+  {
+   "id": "n26",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.5
+  },
+  {
+   "id": "n27",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.0
+  },
+  {
+   "id": "n28",
+   "report": null,
+   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
+   "seconds": 7.2
+  }
+ ]
+}
