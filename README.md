@@ -28,12 +28,13 @@ choose the family's language, press **Create report**. For voice, open **Voice n
 **Transcribe**, fix the text if needed, then create the report. **Weekly summary** tab → *Load sample week*.
 
 ```bash
-pytest                      # 14 offline tests (fake model, no key needed)
+pytest                      # 16 offline tests (fake model, no key needed)
 python -m eval.run_eval     # runs the 28 synthetic notes through the real model, writes EVALUATION.md
+python -m eval.run_eval --resume  # retries failed/missing notes and keeps successful saved results
 python -m eval.run_eval --rescore   # re-score saved results without API calls
 ```
 
-Configuration (env vars): `GEMINI_API_KEY` (required), `GEMINI_MODEL` (default `gemini-2.5-flash`; change it if Google
+Configuration (env vars): `GEMINI_API_KEY` (required), `GEMINI_MODEL` (default `gemini-3.8-flash`; change it if Google
 retires that name), `MAX_NOTE_CHARS`, `MAX_AUDIO_MB`.
 
 ---
@@ -125,8 +126,8 @@ The written analysis is the last section of that file.
 
 ## AI tools used
 
-- **Gemini API (`gemini-3.8-flash`)**: the runtime model for transcription, extraction and summary writing. The project default was changed to `gemini-3.8-flash` because `gemini-2.5-flash` is no longer available to new users and the evaluation returned 404s on that name.
-- **Measured live latency**: the current key is rate-limited and we could not complete a successful end-to-end note run in this environment because the API is returning `429 RESOURCE_EXHAUSTED`. In other words, there is no clean successful `[carepal] model call took X s` sample to claim right now; the service needs quota or billing to be restored before a full evaluation run can complete.
+- **Gemini API (`gemini-3.8-flash`)**: the runtime model for transcription, extraction and summary writing; this matches the configured default.
+- **Measured live latency**: median 19.9 seconds per successful note across six notes (12.7–613.1 seconds, including provider retries). This is a partial-run measurement, not a full 28-note benchmark: 22 saved rows still have provider errors.
 - **Claude (Anthropic)**: used while building - to plan the architecture, draft code, tests and this README. I reviewed and ran the code and tests myself.
 
 ## Repo layout

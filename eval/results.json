@@ -247,9 +247,133 @@
   },
   {
    "id": "n03",
-   "report": null,
-   "error": "Model call failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
-   "seconds": 17.2
+   "report": {
+    "note": "Mrs. Deshpande, post hip surgery day 6. Temp 101.2 F at 11 am, pulse 98. Complained of pain in the operated hip, 7 out of 10. Dressing changed, slight redness around the edge, no discharge. Gave paracetamol 650 mg at 11:30. Informed the family and called Dr. Rao's clinic; doctor asked us to monitor and come for review tomorrow. Physiotherapy done but only 5 minutes, stopped due to pain. Ate soup and a small piece of toast.",
+    "language_of_summary": "English",
+    "date": null,
+    "extraction": {
+     "vitals": {
+      "blood_pressure": null,
+      "pulse": {
+       "value": "98 bpm",
+       "quote": "pulse 98"
+      },
+      "temperature": {
+       "value": "101.2 F",
+       "quote": "Temp 101.2 F"
+      },
+      "spo2": null,
+      "blood_sugar": null,
+      "respiratory_rate": null,
+      "weight": null
+     },
+     "meals": [
+      {
+       "meal": "unspecified",
+       "detail": "soup and a small piece of toast",
+       "quote": "Ate soup and a small piece of toast."
+      }
+     ],
+     "medicines": [
+      {
+       "name": "paracetamol",
+       "dose": "650 mg",
+       "time": "11:30",
+       "status": "given",
+       "quote": "Gave paracetamol 650 mg at 11:30"
+      }
+     ],
+     "activities": [
+      {
+       "activity": "Dressing changed",
+       "quote": "Dressing changed"
+      },
+      {
+       "activity": "Physiotherapy for 5 minutes",
+       "quote": "Physiotherapy done but only 5 minutes, stopped due to pain"
+      }
+     ],
+     "mood": null,
+     "concerns": [
+      {
+       "issue": "Elevated temperature of 101.2 F",
+       "severity": "attention",
+       "quote": "Temp 101.2 F at 11 am",
+       "source": "note"
+      },
+      {
+       "issue": "Pain in the operated hip rated 7 out of 10",
+       "severity": "attention",
+       "quote": "Complained of pain in the operated hip, 7 out of 10",
+       "source": "note"
+      },
+      {
+       "issue": "Slight redness around edge of surgical site dressing",
+       "severity": "monitor",
+       "quote": "slight redness around the edge, no discharge",
+       "source": "note"
+      },
+      {
+       "issue": "Fever (101.2 F)",
+       "severity": "attention",
+       "quote": "Temp 101.2 F",
+       "source": "rule"
+      }
+     ],
+     "summary": [
+      {
+       "text": "Mrs. Deshpande had a fever of 101.2 F at 11 am, and her pulse was 98.",
+       "evidence": [
+        "Temp 101.2 F at 11 am",
+        "pulse 98"
+       ]
+      },
+      {
+       "text": "She experienced hip pain rated 7 out of 10, so physiotherapy was stopped after 5 minutes.",
+       "evidence": [
+        "Complained of pain in the operated hip, 7 out of 10",
+        "Physiotherapy done but only 5 minutes, stopped due to pain"
+       ]
+      },
+      {
+       "text": "Paracetamol 650 mg was administered at 11:30 to help ease her discomfort.",
+       "evidence": [
+        "Gave paracetamol 650 mg at 11:30"
+       ]
+      },
+      {
+       "text": "Her surgical dressing was changed, showing slight redness around the edge but no discharge.",
+       "evidence": [
+        "Dressing changed, slight redness around the edge, no discharge"
+       ]
+      },
+      {
+       "text": "Dr. Rao's clinic was consulted, and the doctor advised monitoring her closely and coming in for a review tomorrow.",
+       "evidence": [
+        "called Dr. Rao's clinic; doctor asked us to monitor and come for review tomorrow"
+       ]
+      },
+      {
+       "text": "She managed to have some soup and a small piece of toast.",
+       "evidence": [
+        "Ate soup and a small piece of toast."
+       ]
+      }
+     ]
+    },
+    "rejected": [],
+    "warnings": [],
+    "not_mentioned": [
+     "vitals.blood_pressure",
+     "vitals.spo2",
+     "vitals.blood_sugar",
+     "vitals.respiratory_rate",
+     "vitals.weight",
+     "mood"
+    ]
+   },
+   "error": null,
+   "seconds": 62.9
   },
   {
    "id": "n04",
@@ -348,15 +472,78 @@
   },
   {
    "id": "n05",
-   "report": null,
-   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
-   "seconds": 7.6
+   "report": {
+    "note": "Rested most of the day. Had lunch and tea. Nothing else to report.",
+    "language_of_summary": "English",
+    "date": null,
+    "extraction": {
+     "vitals": {
+      "blood_pressure": null,
+      "pulse": null,
+      "temperature": null,
+      "spo2": null,
+      "blood_sugar": null,
+      "respiratory_rate": null,
+      "weight": null
+     },
+     "meals": [
+      {
+       "meal": "lunch",
+       "detail": "Had lunch",
+       "quote": "lunch"
+      },
+      {
+       "meal": "fluids",
+       "detail": "Had tea",
+       "quote": "tea"
+      }
+     ],
+     "medicines": [],
+     "activities": [
+      {
+       "activity": "Rested most of the day",
+       "quote": "Rested most of the day"
+      }
+     ],
+     "mood": null,
+     "concerns": [],
+     "summary": [
+      {
+       "text": "The patient spent most of the day resting.",
+       "evidence": [
+        "Rested most of the day"
+       ]
+      },
+      {
+       "text": "They had their lunch and tea.",
+       "evidence": [
+        "Had lunch and tea"
+       ]
+      }
+     ]
+    },
+    "rejected": [],
+    "warnings": [],
+    "not_mentioned": [
+     "vitals.blood_pressure",
+     "vitals.pulse",
+     "vitals.temperature",
+     "vitals.spo2",
+     "vitals.blood_sugar",
+     "vitals.respiratory_rate",
+     "vitals.weight",
+     "medicines",
+     "mood"
+    ]
+   },
+   "error": null,
+   "seconds": 613.1
   },
   {
    "id": "n06",
    "report": null,
-   "error": "Model call failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Q",
-   "seconds": 7.4
+   "error": "Model call failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+   "seconds": 10.5
   },
   {
    "id": "n07",
