@@ -11,12 +11,6 @@ Bonus: a **weekly summary** built from up to seven daily reports.
 
 All data in this repo is synthetic. No real patient data was used.
 
-## Live demo
-
-[Open the live demo](http://10.77.21.177:8501)
-
-This address is on a private network and is reachable only by devices on that network. It is not a public demo link for reviewers; use a public host such as Streamlit Community Cloud for that.
-
 ---
 
 ## Quick start
