@@ -31,7 +31,12 @@ TRANSCRIBE_PROMPT = (
 
 
 class GeminiLLM:
-    def __init__(self, api_key: str, model: str | None = None):
+    def __init__(
+        self,
+        api_key: str,
+        model: str | None = None,
+        transcribe_model: str | None = None,
+    ):
         try:
             from google import genai
             from google.genai import types
@@ -41,22 +46,30 @@ class GeminiLLM:
             ) from e
 
         self._types = types
-        self._client = genai.Client(api_key=api_key)
+        self._client = genai.Client(
+            api_key=api_key,
+            http_options=types.HttpOptions(timeout=30_000),
+        )
         self._model = model or config.GEMINI_MODEL
+        self._transcribe_model = transcribe_model or model or config.GEMINI_TRANSCRIBE_MODEL
 
-    def _call(self, contents, system: str | None, json_mode: bool) -> str:
+    def _call(self, contents, system: str | None, json_mode: bool, model: str | None = None) -> str:
+        selected_model = model or self._model
 
         cfg = self._types.GenerateContentConfig(
             system_instruction=system,
             response_mime_type="application/json" if json_mode else None,
+            thinking_config=(
+                self._types.ThinkingConfig(thinking_level="low") if json_mode else None
+            ),
         )
 
         last: Exception | None = None
 
-        for attempt in range(3):
+        for attempt in range(2):
             try:
                 resp = self._client.models.generate_content(
-                    model=self._model,
+                    model=selected_model,
                     contents=contents,
                     config=cfg,
                 )
@@ -90,8 +103,30 @@ class GeminiLLM:
                 if not transient:
                     break
 
-                if attempt < 2:
+                if attempt < 1:
                     time.sleep(2 * (attempt + 1))
+
+        if (
+            last is not None
+            and ("504" in str(last) or "DEADLINE_EXCEEDED" in str(last))
+            and selected_model != config.GEMINI_FALLBACK_MODEL
+        ):
+            try:
+                resp = self._client.models.generate_content(
+                    model=config.GEMINI_FALLBACK_MODEL,
+                    contents=contents,
+                    config=cfg,
+                )
+                text = (resp.text or "").strip()
+                if not text and json_mode:
+                    raise LLMError("The fallback model returned an empty answer.")
+                return text
+            except LLMError:
+                raise
+            except Exception as e:
+                raise LLMError(
+                    f"Model call failed on the primary and fallback models: {_short(e)}"
+                ) from e
 
         raise LLMError(
             f"Model call failed: {_short(last)}"
@@ -110,6 +145,7 @@ class GeminiLLM:
             [TRANSCRIBE_PROMPT, part],
             None,
             json_mode=False,
+            model=self._transcribe_model,
         )
 
 

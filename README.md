@@ -34,8 +34,11 @@ python -m eval.run_eval --resume  # retries failed/missing notes and keeps succe
 python -m eval.run_eval --rescore   # re-score saved results without API calls
 ```
 
-Configuration (env vars): `GEMINI_API_KEY` (required), `GEMINI_MODEL` (default `gemini-3.8-flash`; change it if Google
-retires a model), `MAX_NOTE_CHARS`, `MAX_AUDIO_MB`.
+Configuration (env vars): `GEMINI_API_KEY` (required), `GEMINI_MODEL` (default `gemini-3.5-flash-lite`; used for reports),
+`GEMINI_TRANSCRIBE_MODEL` (defaults to `GEMINI_MODEL`; used for voice transcription),
+`GEMINI_FALLBACK_MODEL` (default `gemini-3.6-flash`; tried after a 504 deadline from the primary model),
+`MAX_NOTE_CHARS`, `MAX_AUDIO_MB`. Set `GEMINI_TRANSCRIBE_MODEL` only if you want to use a different model that
+supports audio input with `generateContent`.
 
 ---
 
@@ -128,7 +131,7 @@ Free-tier API quotas limit how fast the evaluation can run. If some notes fail w
 
 ## AI tools used
 
-- Gemini (`gemini-3.8-flash`) is the runtime model for transcription, extraction and summary writing.
+- Gemini (`gemini-3.5-flash-lite`) is the runtime model for transcription, extraction and summary writing.
 - **Claude (Anthropic)**: used while building - to plan the architecture, draft code, tests and this README. I reviewed and ran the code and tests myself.
 
 ## Repo layout

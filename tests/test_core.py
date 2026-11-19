@@ -1,9 +1,10 @@
 import json
+from types import SimpleNamespace
 
 import pytest
 
 from carepal.grounding import normalise, numbers_in, quote_in_note
-from carepal.llm import LLMError
+from carepal.llm import GeminiLLM, LLMError
 from carepal.pipeline import generate_report, transcribe_audio
 from carepal.prompts import EXTRACT_SYSTEM
 from carepal.weekly import compute_stats, generate_weekly
@@ -115,6 +116,101 @@ def test_input_validation():
     with pytest.raises(ValueError):
         transcribe_audio(FakeLLM(good(), transcript="  "), b"abc", "audio/wav")
     assert transcribe_audio(FakeLLM(good()), b"abc", "audio/wav") == "BP 120/80 aaj"
+
+
+def test_gemini_uses_dedicated_model_for_transcription_only():
+    calls = []
+
+    class FakeTypes:
+        GenerateContentConfig = staticmethod(lambda **kwargs: kwargs)
+        ThinkingConfig = staticmethod(lambda **kwargs: kwargs)
+
+        class Part:
+            @staticmethod
+            def from_bytes(**kwargs):
+                return kwargs
+
+    class FakeModels:
+        def generate_content(self, **kwargs):
+            calls.append(kwargs)
+            return SimpleNamespace(text=" BP 120/80 ")
+
+    llm = object.__new__(GeminiLLM)
+    llm._types = FakeTypes
+    llm._client = SimpleNamespace(models=FakeModels())
+    llm._model = "report-model"
+    llm._transcribe_model = "transcription-model"
+
+    assert llm.transcribe(b"audio", "audio/wav") == "BP 120/80"
+    assert calls[-1]["model"] == "transcription-model"
+    assert llm.generate_json("system", "user") == "BP 120/80"
+    assert calls[-1]["model"] == "report-model"
+    assert calls[-1]["config"]["thinking_config"] == {"thinking_level": "low"}
+
+
+def test_gemini_client_uses_bounded_request_timeout(monkeypatch):
+    from google import genai
+
+    client_options = {}
+    monkeypatch.setattr(
+        genai,
+        "Client",
+        lambda **kwargs: client_options.update(kwargs) or SimpleNamespace(),
+    )
+
+    GeminiLLM("test-key")
+
+    assert client_options["http_options"].timeout == 30_000
+
+
+def test_gemini_limits_transient_retries_to_one(monkeypatch):
+    calls = []
+
+    class FakeTypes:
+        GenerateContentConfig = staticmethod(lambda **kwargs: kwargs)
+        ThinkingConfig = staticmethod(lambda **kwargs: kwargs)
+
+    class FakeModels:
+        def generate_content(self, **kwargs):
+            calls.append(kwargs)
+            raise RuntimeError("503 UNAVAILABLE")
+
+    llm = object.__new__(GeminiLLM)
+    llm._types = FakeTypes
+    llm._client = SimpleNamespace(models=FakeModels())
+    llm._model = "report-model"
+
+    monkeypatch.setattr("carepal.llm.time.sleep", lambda _: None)
+    with pytest.raises(LLMError):
+        llm.generate_json("system", "user")
+
+    assert len(calls) == 2
+
+
+def test_gemini_falls_back_after_deadline(monkeypatch):
+    calls = []
+
+    class FakeTypes:
+        GenerateContentConfig = staticmethod(lambda **kwargs: kwargs)
+        ThinkingConfig = staticmethod(lambda **kwargs: kwargs)
+
+    class FakeModels:
+        def generate_content(self, **kwargs):
+            calls.append(kwargs["model"])
+            if kwargs["model"] == "report-model":
+                raise RuntimeError("504 DEADLINE_EXCEEDED")
+            return SimpleNamespace(text='{"summary": []}')
+
+    llm = object.__new__(GeminiLLM)
+    llm._types = FakeTypes
+    llm._client = SimpleNamespace(models=FakeModels())
+    llm._model = "report-model"
+
+    monkeypatch.setattr("carepal.llm.time.sleep", lambda _: None)
+    monkeypatch.setattr("carepal.config.GEMINI_FALLBACK_MODEL", "fallback-model")
+
+    assert llm.generate_json("system", "user") == '{"summary": []}'
+    assert calls == ["report-model", "report-model", "fallback-model"]
 
 
 def test_weekly_stats_and_number_check():
